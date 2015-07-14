@@ -1,0 +1,14 @@
+
+<div class="row post-keywords">
+    {% for keyword in post.keywords %}
+    <span class="keyword">
+      {{ keyword }}
+      <a class="fa fa-plus" href="{{ url_for('filtered', filters=add_filter(filter, keyword)) }}">
+      </a>
+    </span>
+    {% endfor %}
+</div>
+
+<div class="row">
+    {{ post.text | nl2br }}
+</div>

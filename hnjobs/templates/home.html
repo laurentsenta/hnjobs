@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>{{ date }}</h2>
+
+{# Top filters #}
+<div id="filterbar" class="row">
+  <span class="post-count">
+    {{ posts | length }} posts
+  </span>
+
+  {% for keyword in filter %}
+  <span class="keyword">
+    {{ keyword }}
+    <a class="fa fa-times"href="{{ url_for('filtered', filters=remove_filter(filter, keyword)) }}"></a>
+  </span>
+
+  {% if not loop.last %}/{% endif %}
+
+  {% endfor %}
+</div>
+
+<div id="core" class="row">
+  <div id="keywords" class="two columns">
+      {% for keyword in keywords %}
+      <h3>
+      <a href="{{ url_for('filtered', filters=add_filter(filter, keyword)) }}">
+         {{ keyword }}
+      </a>
+      </h3>
+      {% endfor %}
+  </div>
+  <div id="posts" class="ten columns">
+      <div class="container">
+        {% for post in posts %}
+          {% include '_post.html' %}
+        {% endfor %}
+      </div>
+  </div>
+</div>
+
+
+
+
+
+{% endblock %}
