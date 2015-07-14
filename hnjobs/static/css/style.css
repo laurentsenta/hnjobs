@@ -1,34 +1,40 @@
-
 a {
   text-decoration: none;
+}
+
+#filterbar {
+  background: #F1F1F1;
+  padding: 1em;
+}
+
+.keyword {
+  background: #FBFCFD;
+  margin: 1em;
+  border-radius: 0.5em;
+  padding: 0.5em;
+}
+
+#keywords {
+  margin-top: 1em;
+
+}
+
+#keywords h3 {
+  font-size: 1em;
+
+}
+
+
+.post-count {
+
 }
 
 #core {
   margin-top: 2em;
 }
 
-#filterbar {
-  background: #F5F5F5;
-}
 
-#keywords {
 
-}
-
-#keywords h3 {
-
-}
-
-.keyword {
-  background: #FBFE0E;
-  margin: 1em;
-  border-radius: 0.5em;
-  padding: 0.5em;
-}
-
-.post-count {
-
-}
 
 .post-keywords {
   margin-top: 2em;

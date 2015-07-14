@@ -2,42 +2,54 @@
 
 {% block content %}
 
-<h2>{{ date }}</h2>
+<h1>{{ date }}</a></h1>
+<em><a href="http://news.ycombinator.com/{{ url }}">original hn post</a></em>
 
-{# Top filters #}
+
+{#
+Filter Bar
+==========
+#}
 <div id="filterbar" class="row">
-  <span class="post-count">
-    {{ posts | length }} posts
-  </span>
+    <span class="post-count">
+	{{ posts | length }} posts
+    </span>
 
-  {% for keyword in filter %}
-  <span class="keyword">
-    {{ keyword }}
-    <a class="fa fa-times"href="{{ url_for('filtered', filters=remove_filter(filter, keyword)) }}"></a>
-  </span>
+    {% for keyword in filter %}
+    <span class="keyword">
+	{{ keyword }}
+	<a class="fa fa-times"href="{{ url_for('filtered', filters=remove_filter(filter, keyword)) }}"></a>
+    </span>
 
-  {% if not loop.last %}/{% endif %}
+    {% if not loop.last %}/{% endif %}
 
-  {% endfor %}
+    {% endfor %}
 </div>
 
 <div id="core" class="row">
-  <div id="keywords" class="two columns">
-      {% for keyword in keywords %}
-      <h3>
-      <a href="{{ url_for('filtered', filters=add_filter(filter, keyword)) }}">
-         {{ keyword }}
-      </a>
-      </h3>
-      {% endfor %}
-  </div>
-  <div id="posts" class="ten columns">
-      <div class="container">
-        {% for post in posts %}
-          {% include '_post.html' %}
-        {% endfor %}
-      </div>
-  </div>
+
+    {#
+    Keyword List
+    ============
+    #}
+    <div id="keywords" class="two columns">
+	{% for keyword in keywords %}
+	<h3 class="keyword">
+	    <a href="{{ url_for('filtered', filters=add_filter(filter, keyword)) }}">
+		{{ keyword }}
+	    </a>
+	</h3>
+	{% endfor %}
+    </div>
+
+
+    <div id="posts" class="ten columns">
+	<div class="container">
+	    {% for post in posts %}
+	    {% include '_post.html' %}
+	    {% endfor %}
+	</div>
+    </div>
 </div>
 
 
