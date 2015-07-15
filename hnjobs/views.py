@@ -95,7 +95,7 @@ def nl2br(eval_ctx, value):
     Add paragraph and line return
     """
     result = u'\n\n'.join(u'<p>%s</p>' % p.replace('\n', '<br>\n') \
-        for p in _paragraph_re.split(escape(value)))
+        for p in _paragraph_re.split(value))
     if eval_ctx.autoescape:
         result = Markup(result)
     return result
